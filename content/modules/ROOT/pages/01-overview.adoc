@@ -1,0 +1,44 @@
+= Workshop overview
+:navtitle: Workshop overview
+
+== Your role and mission
+
+You are a Technical Marketing Manager at Meridian Solutions, a mid-size Red Hat partner specializing in cloud consulting. Your team delivers hands-on workshops at customer events, partner summits, and Red Hat conferences.
+
+Your VP of Technical Marketing just secured a speaking slot at the next Red Hat partner summit. She needs a hands-on workshop for attendees in three weeks. She has heard about Red Hat Showroom and wants the team to use it instead of the old slide-and-SSH approach.
+
+**Your assignment**: Build Meridian's first Showroom-based workshop as a proof of concept.
+
+**The stakes**: If you succeed, Meridian will adopt Showroom as its standard workshop platform, replacing fragile PDF-plus-bastion workshops. Your colleagues are watching -- if the authoring experience is smooth, the whole technical marketing team will adopt it.
+
+== Success criteria
+
+By the end of this workshop, you will have:
+
+* A working Showroom repository with properly configured UI and navigation
+* At least one complete hands-on module with exercises, verification steps, and execute blocks
+* A published site on GitHub Pages that anyone can access
+* Confidence to create additional modules using AI-assisted authoring
+
+== Why Showroom?
+
+Meridian's current workshop approach has significant pain points:
+
+* **Inconsistent experiences**: PDFs and SSH sessions look different every time
+* **No embedded consoles**: Learners constantly switch between instruction documents and terminal windows
+* **Difficult to update**: Content changes require redistributing documents
+* **No version control**: Nobody knows which version of the workshop a learner received
+
+Showroom solves these problems with a browser-based, split-pane interface that combines AsciiDoc instructions with embedded terminals and consoles -- all version-controlled in Git.
+
+== What you'll build
+
+You will create a complete Showroom workshop from scratch, using AI-assisted tools to generate production-quality content in minutes rather than hours.
+
+The workflow:
+
+. Explore a live Showroom to understand how it works
+. Create your own Showroom repository from the official template
+. Configure the UI and site settings
+. Generate a complete workshop module using `/showroom:create-lab`
+. Publish to GitHub Pages

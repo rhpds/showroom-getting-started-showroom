@@ -1,0 +1,113 @@
+= Module 1: Showroom in action
+:navtitle: 1. Showroom in action
+
+== Learning objectives
+
+By the end of this module, you will:
+
+* Describe the Showroom split-pane architecture
+* Use execute blocks to run commands in the embedded terminal
+* View the AsciiDoc source behind a rendered Showroom page
+* Explain how Showroom content is structured in a Git repository
+
+== Welcome to Showroom
+
+You are reading this text inside a running Red Hat Showroom instance right now. Showroom is a browser-based platform that combines written instructions on the left with embedded terminals, consoles, and tools on the right.
+
+Everything you see on the left pane is written in AsciiDoc -- a lightweight markup language -- and rendered by Antora, a documentation site generator. The content lives in a Git repository, which means it is version-controlled, reviewable, and collaborative.
+
+Let's explore how it works by using this very lab as a live example.
+
+== Exercise 1: Run your first execute block
+
+The most important Showroom feature is the **execute block** -- a code block with a clickable button that sends commands directly to the terminal on the right.
+
+Try it now. Click the copy/execute button on the following command:
+
+[source,role="execute"]
+----
+echo "Hello from Showroom! You just ran a command from the instruction pane."
+----
+
+=== Verify
+
+Look at the Terminal tab on the right. You should see:
+
+----
+Hello from Showroom! You just ran a command from the instruction pane.
+----
+
+The command was sent directly from the instruction pane to the terminal. Learners never need to copy and paste -- they click and it runs.
+
+== Exercise 2: Explore the interface
+
+Showroom has several UI features designed for hands-on learning. Try each one:
+
+. **Resize the split pane**: Drag the divider between the left and right panes to adjust the width
+. **Toggle the view**: Click the view switcher icon (near the top of the pane divider) to switch between split view and full-content view
+. **Navigate**: Use the sidebar on the left to jump between modules
+. **Pagination**: Scroll to the bottom of this page and use the "Next" link to preview the next module (then come back here)
+
+=== Verify
+
+Confirm that you can:
+
+* Resize the panes
+* Switch between split and full-content views
+* Navigate using the sidebar
+
+== Exercise 3: View the source
+
+Everything you see on this page is generated from an AsciiDoc file in a Git repository. Let's look at the source code behind this module.
+
+. Open the repository for this lab in a new browser tab:
++
+link:https://github.com/rhpds/showroom-getting-started-showroom[https://github.com/rhpds/showroom-getting-started-showroom^]
+
+. Navigate to `content/modules/ROOT/pages/03-module-01-showroom-in-action.adoc`
+
+. Find the execute block you ran in Exercise 1. In the AsciiDoc source, it looks like this:
++
+[source,asciidoc]
+----
+[source,role="execute"]
+----
+echo "Hello from Showroom!"
+----
+----
++
+The `role="execute"` attribute is what makes the code block clickable. Without it, the block would be static text.
+
+. Notice how the rest of the page maps to AsciiDoc syntax:
++
+* `= Module 1: Showroom in action` -- the page title (single `=`)
+* `== Exercise 1:` -- section headings (double `==`)
+* `=== Verify` -- subsection headings (triple `===`)
+* Numbered steps use `.` prefix
+* Bullet points use `*` prefix
+
+=== Verify
+
+You can now identify:
+
+* Where execute blocks are defined in the source (`[source,role="execute"]`)
+* How headings, numbered lists, and bullet lists are written in AsciiDoc
+* That the rendered page maps directly to the AsciiDoc file in the Git repository
+
+== Learning outcomes
+
+By completing this module, you should now understand:
+
+* Showroom combines AsciiDoc instructions with embedded terminals in a split-pane browser interface
+* Execute blocks (`[source,role="execute"]`) send commands directly to the terminal -- no copy-paste needed
+* All content lives in a Git repository as AsciiDoc files rendered by Antora
+* The UI supports resizable panes, view switching, and sidebar navigation
+
+== What's next
+
+Now that you understand how Showroom works from the learner's perspective, it's time to build your own. In the next module, you will create a Showroom repository and configure it for your workshop.
+
+[IMPORTANT]
+====
+From this point forward, you will be building **your own Showroom** in the Terminal tab. The instructions you read on the left are from *this* lab. The files you create in the terminal are for *your* new workshop.
+====

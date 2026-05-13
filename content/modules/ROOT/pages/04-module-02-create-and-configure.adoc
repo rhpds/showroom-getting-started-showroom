@@ -1,0 +1,180 @@
+= Module 2: Create and configure your Showroom
+:navtitle: 2. Create and configure
+
+== Learning objectives
+
+By the end of this module, you will:
+
+* Create a Showroom repository from the official nookbag template
+* Understand the directory structure and the purpose of each key file
+* Configure `site.yml`, `antora.yml`, and `ui-config.yml` for your workshop
+* Prepare the repository for content generation
+
+== Getting started
+
+Meridian Solutions needs a Showroom for the partner summit workshop. Let's create the repository that will hold your workshop content.
+
+Red Hat provides an official template repository called `showroom_template_nookbag` that includes the correct directory structure, GitHub Pages workflow, and Antora configuration out of the box.
+
+== Exercise 1: Create your repository
+
+. First, authenticate with GitHub if you haven't already:
++
+[source,role="execute"]
+----
+gh auth status
+----
++
+If you are not authenticated, run `gh auth login` and follow the prompts.
+
+. Create your Showroom repository from the nookbag template:
++
+[source,role="execute"]
+----
+gh repo create rhpds/my-first-showroom --template rhpds/showroom_template_nookbag --public --clone
+----
++
+This creates a new repository under the `rhpds` organization, using the nookbag template, and clones it to your local machine.
+
+. Navigate into the repository:
++
+[source,role="execute"]
+----
+cd my-first-showroom
+----
+
+=== Verify
+
+Confirm the repository was created and cloned:
+
+[source,role="execute"]
+----
+git remote -v
+----
+
+Expected output:
+
+----
+origin	https://github.com/rhpds/my-first-showroom.git (fetch)
+origin	https://github.com/rhpds/my-first-showroom.git (push)
+----
+
+== Exercise 2: Explore the directory structure
+
+Before making changes, let's understand what the template gave us.
+
+. View the top-level structure:
++
+[source,role="execute"]
+----
+ls -la
+----
++
+You should see `site.yml`, `ui-config.yml`, `content/`, `examples/`, and `README.adoc`.
+
+. View the content directory:
++
+[source,role="execute"]
+----
+find content/ -type f | sort
+----
++
+The key files and their purposes:
++
+[cols="1,2",options="header"]
+|===
+|File |Purpose
+
+|`site.yml`
+|Antora playbook -- sets the site title, theme, and extensions
+
+|`ui-config.yml`
+|Showroom UI configuration -- tabs, split view, pane width
+
+|`content/antora.yml`
+|Component descriptor -- title, navigation, AsciiDoc attributes
+
+|`content/modules/ROOT/nav.adoc`
+|Sidebar navigation -- controls what appears in the left sidebar
+
+|`content/modules/ROOT/pages/`
+|Your workshop content -- AsciiDoc files go here
+
+|`examples/`
+|Templates and examples -- reference material (keep this intact)
+|===
+
+. The `pages/` directory currently contains documentation about Showroom itself. We need to remove these and replace them with our own workshop content.
+
+=== Verify
+
+[source,role="execute"]
+----
+ls content/modules/ROOT/pages/ | wc -l
+----
+
+Expected output (15 template pages):
+
+----
+15
+----
+
+== Exercise 3: Clean and configure
+
+Now let's clean out the template pages and configure the repository for Meridian's workshop. We'll use Claude Code to do this efficiently.
+
+. Start Claude Code in the repository:
++
+[source,role="execute"]
+----
+claude
+----
+
+. Ask Claude Code to clean and configure your Showroom. Paste the following prompt:
++
+----
+Clean this Showroom repo for a new workshop:
+1. Delete all .adoc files in content/modules/ROOT/pages/
+2. Create directories: content/modules/ROOT/assets/images and content/modules/ROOT/partials
+3. Update site.yml: set title to "Meridian Solutions container workshop"
+4. Update content/antora.yml: set title to "Meridian Solutions container workshop", remove all example attributes (guid, bastion_*, ssh_*, openshift_*), keep only experimental: true and page-pagination: true
+5. Update ui-config.yml: replace the Antora external URL tab with a Terminal tab (path: /wetty, port: 443), set default_width to 40
+6. Replace content/modules/ROOT/nav.adoc with just: * xref:index.adoc[Home]
+----
+
+. Review the changes Claude Code makes. It will edit the configuration files and clean the pages directory.
+
+. When Claude Code finishes, exit it:
++
+----
+/exit
+----
+
+=== Verify
+
+Confirm the cleanup and configuration:
+
+[source,role="execute"]
+----
+echo "=== Pages directory ===" && ls content/modules/ROOT/pages/ 2>&1 && echo "=== site.yml title ===" && grep "title:" site.yml && echo "=== ui-config tabs ===" && grep -A2 "tabs:" ui-config.yml && echo "=== nav.adoc ===" && cat content/modules/ROOT/nav.adoc
+----
+
+You should see:
+
+* An empty pages directory
+* The site title set to "Meridian Solutions container workshop"
+* A Terminal tab configured in ui-config.yml
+* A minimal nav.adoc with only the Home entry
+
+== Learning outcomes
+
+By completing this module, you should now understand:
+
+* How to create a Showroom repository from the nookbag template using `gh repo create`
+* The purpose of the four key configuration files (`site.yml`, `antora.yml`, `ui-config.yml`, `nav.adoc`)
+* How to use Claude Code to efficiently clean and configure repository files
+* That the `examples/` directory contains templates used by the AI content generation skills
+
+== What's next
+
+Your repository is clean and configured. In the next module, you will generate a complete workshop module using the `/showroom:create-lab` skill and publish it to GitHub Pages.

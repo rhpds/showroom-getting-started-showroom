@@ -1,0 +1,80 @@
+= Conclusion and next steps
+:navtitle: Conclusion
+
+Congratulations! You've completed the Getting started with Red Hat Showroom workshop.
+
+== What you've learned
+
+Throughout this workshop, you gained hands-on experience with:
+
+* How Showroom works -- the split-pane architecture, execute blocks, and navigation
+* Creating a Showroom repository from the nookbag template using `gh repo create`
+* Configuring the three key files: `site.yml`, `antora.yml`, and `ui-config.yml`
+* Generating complete workshop content using the `/showroom:create-lab` AI skill
+* Validating content quality with `/showroom:verify-content`
+* Previewing locally with Podman and publishing to GitHub Pages
+
+You now have the skills to create professional, hands-on workshops for any Red Hat technology.
+
+== Key takeaways
+
+. **Showroom is AsciiDoc in a Git repo**: All content is version-controlled, collaborative, and reviewable -- no more fragile PDFs or slide decks
+. **The nookbag template gets you started fast**: `gh repo create --template rhpds/showroom_template_nookbag` gives you the correct structure, GitHub Pages workflow, and Antora configuration out of the box
+. **AI skills accelerate authoring**: `/showroom:create-lab` generates production-quality modules in minutes, following Red Hat style and accessibility standards automatically
+. **Execute blocks are the killer feature**: `[source,role="execute"]` turns static instructions into interactive, clickable commands -- learners never need to copy and paste
+
+== Next steps
+
+=== Create more modules
+
+Add modules to your workshop by running `/showroom:create-lab` again and choosing "EXISTING lab." The skill detects the next file number, continues your story arc, and updates the navigation automatically.
+
+=== Explore advanced features
+
+* **Mermaid diagrams**: Add flowcharts and architecture diagrams directly in AsciiDoc
+* **Tabbed content**: Show platform-specific instructions (e.g., Podman vs Docker) with the tabs extension
+* **Variable substitution**: Use `{attribute}` placeholders for environment-specific values that Showroom replaces at deploy time
+
+=== Use other RHDP skills
+
+The RHDP Skills Marketplace has additional skills for the full content lifecycle:
+
+* `/showroom:create-demo` -- generate presenter-led demo content
+* `/showroom:verify-content` -- validate content quality
+* `/showroom:blog-generate` -- transform workshops into blog posts
+* `/agnosticv:catalog-builder` -- create AgnosticV catalog items for RHDP deployment
+
+=== Deploy on RHDP
+
+Publishing to GitHub Pages is great for previewing and sharing links. For the full Showroom experience with embedded terminals and consoles, deploy your content on the Red Hat Demo Platform using AgnosticV catalog items. See the link:https://rhpds.github.io/showroom_template_nookbag/modules/quick-start.html[Showroom quick-start guide^] for deployment instructions.
+
+== References
+
+=== Showroom documentation
+
+* link:https://rhpds.github.io/showroom_template_nookbag/[Showroom template documentation^] -- comprehensive reference for content authors
+* link:https://github.com/rhpds/showroom_template_nookbag[Nookbag template repository^] -- the official Showroom content template
+
+=== RHDP Skills Marketplace
+
+* link:https://github.com/rhpds/rhdp-skills-marketplace[RHDP Skills Marketplace^] -- AI-powered skills for Showroom content creation
+* link:https://rhpds.github.io/rhdp-skills-marketplace/[Skills Marketplace documentation^] -- setup guides, skill reference, and tutorials
+
+=== AsciiDoc and Antora
+
+* link:https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc Language Documentation^] -- complete syntax reference
+* link:https://docs.antora.org/antora/latest/[Antora Documentation^] -- the documentation site generator used by Showroom
+
+== Share your feedback
+
+Help us improve this workshop:
+
+* What did you find most valuable?
+* What could be improved?
+* What topics would you like to see covered in a follow-up workshop?
+
+Reach out on Slack: link:https://redhat.enterprise.slack.com/archives/C04MLMA15MX[#forum-demo-developers^]
+
+== Thank you!
+
+Thank you for completing this workshop. You are now equipped to create professional, interactive Showroom workshops for any Red Hat technology. Go build something great!

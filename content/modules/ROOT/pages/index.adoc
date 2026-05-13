@@ -1,0 +1,37 @@
+= Getting started with Red Hat Showroom
+
+Welcome to the Getting started with Red Hat Showroom workshop!
+
+== What you'll learn
+
+In this workshop, you will:
+
+* Understand how Red Hat Showroom works by exploring a live instance
+* Create your own Showroom repository from the official template
+* Configure the split-pane UI, navigation, and site settings
+* Generate complete workshop content using AI-assisted authoring with `/showroom:create-lab`
+* Publish your Showroom to GitHub Pages
+
+== Who this is for
+
+This workshop is designed for anyone at Red Hat who wants to create hands-on workshops and demos -- product managers, technical marketing managers, field teams, solution architects, and content creators.
+
+**Experience level**: Beginner -- no prior AsciiDoc, Antora, or Showroom experience required.
+
+== Prerequisites
+
+Before starting this workshop, you should have:
+
+* A GitHub account with access to the link:https://github.com/rhpds[rhpds organization^]
+* Basic familiarity with terminal commands
+* Claude Code installed with the RHDP Skills Marketplace plugin
+
+NOTE: All tools (GitHub CLI, Podman, Claude Code) are available in the lab environment.
+
+== Estimated time
+
+This workshop takes approximately **30 minutes** to complete.
+
+== Let's get started!
+
+Click on **Workshop overview** in the navigation to begin.

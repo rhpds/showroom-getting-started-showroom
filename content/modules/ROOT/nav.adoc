@@ -1,1 +1,9 @@
 * xref:index.adoc[Home]
+* xref:01-overview.adoc[Workshop overview]
+* xref:02-details.adoc[Workshop details]
+
+.Modules
+* xref:03-module-01-showroom-in-action.adoc[1. Showroom in action]
+* xref:04-module-02-create-and-configure.adoc[2. Create and configure]
+* xref:05-module-03-generate-and-publish.adoc[3. Generate and publish]
+* xref:06-conclusion.adoc[Conclusion]
