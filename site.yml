@@ -1,7 +1,7 @@
 ---
 site:
-  title: Showroom Template Demo
-  url: https://github.com/rhpds/showroom_template_nookbag
+  title: Getting started with Red Hat Showroom
+  url: https://github.com/rhpds/showroom-getting-started-showroom
   start_page: modules::index.adoc
 
 content:
