@@ -1,14 +1,15 @@
 ---
 type: showroom
 
-default_width: 40
+default_width: 50
 persist_url_state: true
 
 view_switcher:
   enabled: true
-  default_mode: split
+  default_mode: page
 
 tabs:
-  - name: Terminal
-    path: /wetty
-    port: 443
+  - name: Showroom Docs
+    url: 'https://rhpds.github.io/showroom_template_nookbag/'
+  - name: Skills Marketplace
+    url: 'https://rhpds.github.io/rhdp-skills-marketplace/'

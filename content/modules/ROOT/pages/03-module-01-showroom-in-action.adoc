@@ -5,109 +5,118 @@
 
 By the end of this module, you will:
 
-* Describe the Showroom split-pane architecture
-* Use execute blocks to run commands in the embedded terminal
+* Describe what a Showroom is and the two delivery models (RHDP and GitHub Pages)
+* Identify the key components of a Showroom content repository
 * View the AsciiDoc source behind a rendered Showroom page
-* Explain how Showroom content is structured in a Git repository
+* Understand how content maps from source files to what learners see
 
-== Welcome to Showroom
+== What is Showroom?
 
-You are reading this text inside a running Red Hat Showroom instance right now. Showroom is a browser-based platform that combines written instructions on the left with embedded terminals, consoles, and tools on the right.
+Red Hat Showroom is a platform for delivering interactive, hands-on workshops in the browser. Content is written in AsciiDoc, stored in a Git repository, and rendered by Antora (a documentation site generator).
 
-Everything you see on the left pane is written in AsciiDoc -- a lightweight markup language -- and rendered by Antora, a documentation site generator. The content lives in a Git repository, which means it is version-controlled, reviewable, and collaborative.
+Showroom supports two delivery models:
 
-Let's explore how it works by using this very lab as a live example.
+[cols="1,1,1",options="header"]
+|===
+|Model |What the learner gets |When to use
 
-== Exercise 1: Run your first execute block
+|**RHDP deployment**
+|Split-pane UI with embedded terminals, OpenShift consoles, and clickable execute blocks that send commands directly to a terminal
+|Production workshops on the Red Hat Demo Platform
 
-The most important Showroom feature is the **execute block** -- a code block with a clickable button that sends commands directly to the terminal on the right.
+|**GitHub Pages**
+|Rendered AsciiDoc content with navigation, pagination, and copy-to-clipboard code blocks
+|Sharing content, previewing, standalone tutorials like this one
+|===
 
-Try it now. Click the copy/execute button on the following command:
+This lab uses the GitHub Pages model. You are reading it right now.
 
-[source,role="execute"]
-----
-echo "Hello from Showroom! You just ran a command from the instruction pane."
-----
+== Exercise 1: Explore this Showroom
 
-=== Verify
+You are inside a working Showroom. Take a moment to explore the interface:
 
-Look at the Terminal tab on the right. You should see:
+. **Navigation sidebar** (left): Click through the module titles to see how the lab is organized
+. **Pagination** (bottom): Scroll to the bottom and notice the "Next" and "Previous" links
+. **Content formatting**: Notice the headings, numbered steps, code blocks, tables, and admonition boxes like the NOTE on the index page
 
-----
-Hello from Showroom! You just ran a command from the instruction pane.
-----
-
-The command was sent directly from the instruction pane to the terminal. Learners never need to copy and paste -- they click and it runs.
-
-== Exercise 2: Explore the interface
-
-Showroom has several UI features designed for hands-on learning. Try each one:
-
-. **Resize the split pane**: Drag the divider between the left and right panes to adjust the width
-. **Toggle the view**: Click the view switcher icon (near the top of the pane divider) to switch between split view and full-content view
-. **Navigate**: Use the sidebar on the left to jump between modules
-. **Pagination**: Scroll to the bottom of this page and use the "Next" link to preview the next module (then come back here)
+All of this is generated from AsciiDoc files in a Git repository.
 
 === Verify
 
-Confirm that you can:
+Confirm you can navigate between pages using the sidebar and pagination links. You should be able to reach every module from the navigation.
 
-* Resize the panes
-* Switch between split and full-content views
-* Navigate using the sidebar
+== Exercise 2: View the source
 
-== Exercise 3: View the source
-
-Everything you see on this page is generated from an AsciiDoc file in a Git repository. Let's look at the source code behind this module.
+Let's look at the AsciiDoc source behind this page.
 
 . Open the repository for this lab in a new browser tab:
 +
-link:https://github.com/rhpds/showroom-getting-started-showroom[https://github.com/rhpds/showroom-getting-started-showroom^]
+link:https://github.com/rhpds/showroom-getting-started-showroom[github.com/rhpds/showroom-getting-started-showroom^]
 
 . Navigate to `content/modules/ROOT/pages/03-module-01-showroom-in-action.adoc`
 
-. Find the execute block you ran in Exercise 1. In the AsciiDoc source, it looks like this:
+. Compare what you see rendered here (in the browser) with the AsciiDoc source on GitHub. Notice how:
 +
-[source,asciidoc]
-----
-[source,role="execute"]
-----
-echo "Hello from Showroom!"
-----
-----
-+
-The `role="execute"` attribute is what makes the code block clickable. Without it, the block would be static text.
+* `= Module 1: Showroom in action` becomes the page title
+* `== Exercise 1:` becomes a section heading
+* Numbered steps use the `.` prefix
+* Bullet points use the `*` prefix
+* Code blocks are wrapped in `----` fences
+* Links use the `link:URL[text^]` syntax (the `^` opens in a new tab)
 
-. Notice how the rest of the page maps to AsciiDoc syntax:
-+
-* `= Module 1: Showroom in action` -- the page title (single `=`)
-* `== Exercise 1:` -- section headings (double `==`)
-* `=== Verify` -- subsection headings (triple `===`)
-* Numbered steps use `.` prefix
-* Bullet points use `*` prefix
+. Now look at `content/modules/ROOT/nav.adoc` -- this file controls the sidebar navigation you see on the left
+
+. Look at `site.yml` -- this sets the site title and theme
+
+. Look at `ui-config.yml` -- this configures the right-side tabs (in RHDP deployments, this would include a Terminal tab)
 
 === Verify
 
 You can now identify:
 
-* Where execute blocks are defined in the source (`[source,role="execute"]`)
-* How headings, numbered lists, and bullet lists are written in AsciiDoc
-* That the rendered page maps directly to the AsciiDoc file in the Git repository
+* Where the content lives (`content/modules/ROOT/pages/`)
+* How navigation is defined (`nav.adoc`)
+* How the site is configured (`site.yml`, `ui-config.yml`)
+
+== Exercise 3: Understand the content structure
+
+Every Showroom repository follows the same directory layout:
+
+----
+your-showroom/
+├── site.yml                           # Antora playbook: title, theme, extensions
+├── ui-config.yml                      # Showroom UI: tabs, split view, width
+├── content/
+│   ├── antora.yml                     # Component descriptor: title, attributes
+│   └── modules/
+│       └── ROOT/
+│           ├── nav.adoc               # Sidebar navigation
+│           ├── pages/                 # Your AsciiDoc content files
+│           ├── assets/images/         # Screenshots and diagrams
+│           └── partials/              # Reusable snippets and shared attributes
+└── examples/                          # Templates and examples (reference material)
+----
+
+The four key configuration files:
+
+. **`site.yml`** -- Sets the site title, Antora theme, and extensions. You rarely change anything beyond the title.
+. **`content/antora.yml`** -- Defines the component title and AsciiDoc attributes (variables like `{openshift_console_url}` that get replaced at deploy time).
+. **`ui-config.yml`** -- Configures the Showroom split-pane UI: which tabs appear, default width, and view mode. On GitHub Pages this has limited effect, but it is critical for RHDP deployments.
+. **`content/modules/ROOT/nav.adoc`** -- Controls the sidebar navigation. Without an entry here, a page is invisible to learners.
+
+=== Verify
+
+You understand the four configuration files and their roles. In the next module, you will create and configure all of them for your own Showroom.
 
 == Learning outcomes
 
 By completing this module, you should now understand:
 
-* Showroom combines AsciiDoc instructions with embedded terminals in a split-pane browser interface
-* Execute blocks (`[source,role="execute"]`) send commands directly to the terminal -- no copy-paste needed
-* All content lives in a Git repository as AsciiDoc files rendered by Antora
-* The UI supports resizable panes, view switching, and sidebar navigation
+* Showroom delivers AsciiDoc content from a Git repository, rendered by Antora
+* Two delivery models exist: full RHDP deployment (split-pane with terminals) and GitHub Pages (standalone content site)
+* The content repository has a standard directory layout with four key configuration files
+* What you see rendered in the browser maps directly to AsciiDoc source files on GitHub
 
 == What's next
 
-Now that you understand how Showroom works from the learner's perspective, it's time to build your own. In the next module, you will create a Showroom repository and configure it for your workshop.
-
-[IMPORTANT]
-====
-From this point forward, you will be building **your own Showroom** in the Terminal tab. The instructions you read on the left are from *this* lab. The files you create in the terminal are for *your* new workshop.
-====
+Now that you understand how Showroom works, it's time to build your own. Open your terminal -- the next module is all hands-on.

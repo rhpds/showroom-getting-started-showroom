@@ -16,7 +16,7 @@ Your VP of Technical Marketing just secured a speaking slot at the next Red Hat 
 By the end of this workshop, you will have:
 
 * A working Showroom repository with properly configured UI and navigation
-* At least one complete hands-on module with exercises, verification steps, and execute blocks
+* At least one complete hands-on module with exercises and verification steps
 * A published site on GitHub Pages that anyone can access
 * Confidence to create additional modules using AI-assisted authoring
 
@@ -29,7 +29,7 @@ Meridian's current workshop approach has significant pain points:
 * **Difficult to update**: Content changes require redistributing documents
 * **No version control**: Nobody knows which version of the workshop a learner received
 
-Showroom solves these problems with a browser-based, split-pane interface that combines AsciiDoc instructions with embedded terminals and consoles -- all version-controlled in Git.
+Showroom solves these problems with a browser-based interface that combines AsciiDoc instructions with embedded terminals and consoles -- all version-controlled in Git and deployable on the Red Hat Demo Platform or as a standalone GitHub Pages site.
 
 == What you'll build
 
@@ -37,7 +37,7 @@ You will create a complete Showroom workshop from scratch, using AI-assisted too
 
 The workflow:
 
-. Explore a live Showroom to understand how it works
+. Explore a published Showroom to understand how it works
 . Create your own Showroom repository from the official template
 . Configure the UI and site settings
 . Generate a complete workshop module using `/showroom:create-lab`

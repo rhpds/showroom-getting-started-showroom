@@ -14,31 +14,31 @@ By the end of this module, you will:
 
 Your Showroom repository is configured and ready. Now comes the exciting part -- generating your first workshop module using AI-assisted authoring.
 
-The `/showroom:create-lab` skill walks you through an interactive workflow that asks about your workshop topic, audience, business scenario, and learning objectives. It then generates complete, production-quality AsciiDoc files with exercises, verification steps, and proper formatting.
+The `/showroom:create-lab` skill walks you through an interactive workflow that asks about your workshop topic, audience, business scenario, and learning objectives. It then generates complete, production-quality AsciiDoc files with exercises, verification steps, and proper Red Hat formatting.
 
 == Exercise 1: Generate your workshop content
 
 . Make sure you are in your Showroom repository directory:
 +
-[source,role="execute"]
+[source,bash]
 ----
 cd ~/my-first-showroom
 ----
 
 . Start Claude Code:
 +
-[source,role="execute"]
+[source,bash]
 ----
 claude
 ----
 
-. Run the create-lab skill to generate your first module:
+. Run the create-lab skill:
 +
 ----
 /showroom:create-lab content/modules/ROOT/pages/ --new
 ----
 
-. The skill will ask you a series of questions. Here are suggested answers for Meridian's workshop, but feel free to customize:
+. The skill asks a series of questions, one at a time. Here are suggested answers for Meridian's workshop, but feel free to customize:
 +
 [cols="1,2",options="header"]
 |===
@@ -66,31 +66,27 @@ claude
 |OpenShift (use version placeholders), single module
 |===
 
-. The skill will generate four files:
+. The skill generates four files:
 +
 * `index.adoc` -- learner landing page
 * `01-overview.adoc` -- business scenario and objectives
 * `02-details.adoc` -- technical requirements
 * `03-module-01-*.adoc` -- your first hands-on module with exercises
-
-. When the skill finishes, exit Claude Code:
 +
-----
-/exit
-----
+It also updates `nav.adoc` with entries for all new pages.
+
+. When the skill finishes, stay in Claude Code for the next exercise.
 
 === Verify
 
-Confirm the files were generated:
+Check that the files were generated:
 
-[source,role="execute"]
 ----
-ls -la content/modules/ROOT/pages/
+ls content/modules/ROOT/pages/
 ----
 
-You should see 4 or more `.adoc` files. Check that the navigation was updated:
+You should see 4 or more `.adoc` files. Check the navigation:
 
-[source,role="execute"]
 ----
 cat content/modules/ROOT/nav.adoc
 ----
@@ -99,154 +95,151 @@ The navigation should list all generated pages.
 
 == Exercise 2: Validate your content
 
-The RHDP Skills Marketplace includes a verification skill that checks your content against Red Hat quality standards, AsciiDoc syntax rules, and accessibility requirements.
+Still in Claude Code, run the verification skill:
 
-. Start Claude Code again:
-+
-[source,role="execute"]
-----
-claude
-----
-
-. Run the verification skill:
-+
 ----
 /showroom:verify-content
 ----
 
-. Review the results. The skill checks for:
-+
-* Correct AsciiDoc formatting (execute blocks, list spacing, headings)
-* Red Hat style guide compliance (sentence case headings, no em dashes, proper product names)
-* Accessibility (alt text on images, proper heading hierarchy)
+This checks your content against:
+
+* AsciiDoc syntax rules (execute blocks, list spacing, heading levels)
+* Red Hat style guide (sentence case headings, no em dashes, proper product names)
+* Accessibility requirements (alt text on images, heading hierarchy)
 * Workshop structure (learning objectives, verification sections, learning outcomes)
 
-. Fix any issues the verification identifies. You can ask Claude Code to fix them:
-+
+If the verification identifies issues, ask Claude Code to fix them:
+
 ----
 Fix the issues identified by verify-content
 ----
 
-. Exit Claude Code:
-+
+Exit Claude Code when done:
+
 ----
 /exit
 ----
 
 === Verify
 
-Run the verification skill again to confirm all issues are resolved. A clean verification means your content is production-ready.
+All verification checks pass, or you have addressed the identified issues.
 
 == Exercise 3: Preview locally
 
-Before publishing, preview your Showroom locally to see how it will look to learners.
+Before publishing, preview your Showroom locally to see how it looks.
 
 . From the repository root, run the Antora viewer container:
 +
-[source,role="execute"]
+[source,bash]
 ----
 podman run --rm --name antora -v $PWD:/antora:z -p 8080:8080 -i -t ghcr.io/juliaaano/antora-viewer
 ----
 +
 [NOTE]
 ====
-The `:z` suffix on the volume mount is required on SELinux-enabled systems (RHEL, Fedora). If you're on macOS, you can omit it.
+The `:z` suffix on the volume mount is for SELinux-enabled systems (RHEL, Fedora). On macOS, you can omit it: `-v $PWD:/antora`.
 ====
 
-. Open http://localhost:8080 in a new browser tab to see your rendered Showroom.
+. Open http://localhost:8080 in your browser.
 
 . Check that:
 +
 * The navigation sidebar shows all your pages
 * The landing page displays your workshop title and objectives
-* The module has properly formatted exercises with execute blocks
+* The module has properly formatted exercises with code blocks
 * Pagination (Next/Previous) links work between pages
 
 . When done, press kbd:[Ctrl+C] in the terminal to stop the container.
 
 === Verify
 
-Confirm the preview rendered correctly:
-
-* Navigation sidebar shows all pages
-* Content displays with proper formatting
-* Execute blocks appear with the copy/run button styling
+Your content renders correctly in the local preview with working navigation and properly formatted code blocks.
 
 == Exercise 4: Publish to GitHub Pages
 
-Time to make your Showroom live. The nookbag template includes a GitHub Actions workflow that automatically builds and deploys your site whenever you push to the `main` branch.
+Time to go live. The nookbag template includes a GitHub Actions workflow that automatically builds and deploys your site when you push to `main`.
 
 . Stage and commit your content:
 +
-[source,role="execute"]
+[source,bash]
 ----
-git add -A && git commit -m "Add first workshop module"
+git add -A
+git commit -m "Add first workshop module"
 ----
 
 . Push to GitHub:
 +
-[source,role="execute"]
+[source,bash]
 ----
 git push origin main
 ----
 
 . Enable GitHub Pages (one-time setup):
 +
-[source,role="execute"]
+[source,bash]
 ----
-gh api repos/rhpds/my-first-showroom/pages -X POST -f build_type=workflow
+gh api repos/rhpds/my-first-showroom/pages \
+  -X POST -f build_type=workflow
 ----
 +
 [NOTE]
 ====
-If Pages is already enabled, this command may return an error. That is fine -- it means Pages was already configured.
+If Pages is already enabled, this command may return an error. That's fine -- it means Pages was already configured.
 ====
 
-. Monitor the deployment:
+. Monitor the deployment (typically 1-2 minutes):
 +
-[source,role="execute"]
-----
-gh run list --limit 3
-----
-+
-Wait for the workflow to complete (typically 1-2 minutes). You can check the status with:
-+
-[source,role="execute"]
+[source,bash]
 ----
 gh run list --limit 1
 ----
-
-. Once the workflow succeeds, open your published Showroom:
 +
-link:https://rhpds.github.io/my-first-showroom/[https://rhpds.github.io/my-first-showroom/^]
+Wait until the status shows `completed`.
+
+. Open your published Showroom:
++
+----
+https://rhpds.github.io/my-first-showroom/
+----
++
+Replace `my-first-showroom` with your actual repository name.
 
 === Verify
-
-Confirm your Showroom is live:
 
 * The GitHub Pages URL loads successfully
 * Your workshop title appears in the site header
 * All modules are accessible via the navigation sidebar
 * Content matches what you saw in the local preview
 
-== Learning outcomes
-
-By completing this module, you should now understand:
-
-* How `/showroom:create-lab` generates complete workshop content through an interactive Q&A workflow
-* How `/showroom:verify-content` validates content against Red Hat quality standards
-* How to preview a Showroom locally with Podman before publishing
-* How GitHub Pages automatically deploys your content when you push to `main`
-* The full authoring cycle: generate, verify, preview, publish
-
 == What you've accomplished
 
-In 30 minutes, you went from zero to a fully published Showroom workshop. Here is what Meridian Solutions now has:
+In 30 minutes, you went from zero to a fully published Showroom workshop:
 
 * A version-controlled workshop repository on GitHub
-* A properly configured Showroom with split-pane UI and terminal access
+* A properly configured Showroom ready for both GitHub Pages and RHDP deployment
 * A production-quality hands-on module with exercises and verification steps
 * An automated publishing pipeline via GitHub Pages
 * A repeatable process for creating additional modules
 
 Your VP will be pleased. The proof of concept is ready for the partner summit.
+
+== Adding more modules
+
+To add another module to your workshop:
+
+. Start Claude Code in your repository
+. Run `/showroom:create-lab content/modules/ROOT/pages/`
+. Choose "EXISTING lab" when asked
+. The skill detects the next file number, continues your story arc, and updates the navigation
+
+When you finish your last module, tell the skill it's the final one -- it will generate a conclusion page with consolidated references from all modules.
+
+== Learning outcomes
+
+By completing this module, you should now understand:
+
+* How `/showroom:create-lab` generates complete workshop content through an interactive Q&A
+* How `/showroom:verify-content` validates content against Red Hat quality standards
+* How to preview a Showroom locally with Podman before publishing
+* How GitHub Pages automatically deploys your content when you push to `main`
+* How to add more modules to an existing workshop

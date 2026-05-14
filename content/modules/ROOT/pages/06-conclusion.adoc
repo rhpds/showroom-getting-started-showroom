@@ -7,9 +7,9 @@ Congratulations! You've completed the Getting started with Red Hat Showroom work
 
 Throughout this workshop, you gained hands-on experience with:
 
-* How Showroom works -- the split-pane architecture, execute blocks, and navigation
-* Creating a Showroom repository from the nookbag template using `gh repo create`
-* Configuring the three key files: `site.yml`, `antora.yml`, and `ui-config.yml`
+* How Showroom works -- AsciiDoc content in Git, rendered by Antora, delivered via GitHub Pages or the Red Hat Demo Platform
+* Creating a Showroom repository from the nookbag template using `gh repo create --template`
+* Configuring the four key files: `site.yml`, `antora.yml`, `ui-config.yml`, and `nav.adoc`
 * Generating complete workshop content using the `/showroom:create-lab` AI skill
 * Validating content quality with `/showroom:verify-content`
 * Previewing locally with Podman and publishing to GitHub Pages
@@ -19,9 +19,9 @@ You now have the skills to create professional, hands-on workshops for any Red H
 == Key takeaways
 
 . **Showroom is AsciiDoc in a Git repo**: All content is version-controlled, collaborative, and reviewable -- no more fragile PDFs or slide decks
-. **The nookbag template gets you started fast**: `gh repo create --template rhpds/showroom_template_nookbag` gives you the correct structure, GitHub Pages workflow, and Antora configuration out of the box
+. **The nookbag template gets you started fast**: One `gh repo create --template` command gives you the correct structure, GitHub Pages workflow, and Antora configuration
 . **AI skills accelerate authoring**: `/showroom:create-lab` generates production-quality modules in minutes, following Red Hat style and accessibility standards automatically
-. **Execute blocks are the killer feature**: `[source,role="execute"]` turns static instructions into interactive, clickable commands -- learners never need to copy and paste
+. **Two delivery models, one repo**: The same content works on GitHub Pages (for previewing and sharing) and on the Red Hat Demo Platform (for the full split-pane experience with embedded terminals)
 
 == Next steps
 
@@ -29,24 +29,27 @@ You now have the skills to create professional, hands-on workshops for any Red H
 
 Add modules to your workshop by running `/showroom:create-lab` again and choosing "EXISTING lab." The skill detects the next file number, continues your story arc, and updates the navigation automatically.
 
-=== Explore advanced features
+=== Deploy on the Red Hat Demo Platform
+
+Publishing to GitHub Pages is great for previewing and sharing. For the full Showroom experience with embedded terminals, consoles, and clickable execute blocks, deploy your content on RHDP using AgnosticV catalog items.
+
+See the link:https://rhpds.github.io/showroom_template_nookbag/modules/quick-start.html[Showroom quick-start guide^] for deployment instructions.
+
+=== Explore advanced AsciiDoc features
 
 * **Mermaid diagrams**: Add flowcharts and architecture diagrams directly in AsciiDoc
 * **Tabbed content**: Show platform-specific instructions (e.g., Podman vs Docker) with the tabs extension
-* **Variable substitution**: Use `{attribute}` placeholders for environment-specific values that Showroom replaces at deploy time
+* **Execute blocks**: Use `[source,role="execute"]` to create clickable command blocks that work in RHDP deployments
+* **Keyboard macros**: Use `kbd:[Ctrl+C]` for formatted keyboard shortcuts (requires `experimental: true` in `antora.yml`)
 
 === Use other RHDP skills
 
 The RHDP Skills Marketplace has additional skills for the full content lifecycle:
 
-* `/showroom:create-demo` -- generate presenter-led demo content
-* `/showroom:verify-content` -- validate content quality
+* `/showroom:create-demo` -- generate presenter-led demo content with Know/Show structure
+* `/showroom:verify-content` -- validate content against Red Hat quality standards
 * `/showroom:blog-generate` -- transform workshops into blog posts
 * `/agnosticv:catalog-builder` -- create AgnosticV catalog items for RHDP deployment
-
-=== Deploy on RHDP
-
-Publishing to GitHub Pages is great for previewing and sharing links. For the full Showroom experience with embedded terminals and consoles, deploy your content on the Red Hat Demo Platform using AgnosticV catalog items. See the link:https://rhpds.github.io/showroom_template_nookbag/modules/quick-start.html[Showroom quick-start guide^] for deployment instructions.
 
 == References
 
@@ -77,4 +80,4 @@ Reach out on Slack: link:https://redhat.enterprise.slack.com/archives/C04MLMA15M
 
 == Thank you!
 
-Thank you for completing this workshop. You are now equipped to create professional, interactive Showroom workshops for any Red Hat technology. Go build something great!
+Thank you for completing this workshop. You are now equipped to create professional, interactive Showroom workshops for any Red Hat technology.

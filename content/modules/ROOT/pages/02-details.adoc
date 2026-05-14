@@ -24,29 +24,44 @@
 |**30 minutes**
 |===
 
-== Technical requirements
+== What you need on your laptop
 
-=== Tools used
+This workshop runs entirely on your local machine. Make sure you have:
 
-* **GitHub CLI** (`gh`) -- create repositories from templates
-* **Git** -- version control
-* **Podman** -- local preview of Showroom content
-* **Claude Code** -- AI-assisted content generation with RHDP skills
+* **GitHub CLI** (`gh`) -- link:https://cli.github.com[Install instructions^]
+* **Git** -- link:https://git-scm.com/downloads[Install instructions^]
+* **Podman** -- link:https://podman.io/docs/installation[Install instructions^]
+* **Claude Code** -- link:https://claude.ai/claude-code[Install instructions^]
+* **A terminal** -- Terminal.app, iTerm2, Windows Terminal, or your IDE's integrated terminal
+* **A browser** -- to read these instructions and preview your Showroom
 
-=== Environment access
+=== Verify your setup
 
-All tools are pre-installed in the lab environment. You will use the Terminal tab on the right side of this screen for all commands.
+Open a terminal and run:
 
-You also need:
+[source,bash]
+----
+gh --version && git --version && podman --version && claude --version
+----
 
-* A GitHub account with write access to the link:https://github.com/rhpds[rhpds organization^]
-* The RHDP Skills Marketplace plugin installed in Claude Code
+All four commands should return version numbers. If any are missing, install them before proceeding.
+
+=== RHDP Skills Marketplace plugin
+
+If you haven't installed the skills plugin yet, start Claude Code and run:
+
+----
+/plugin marketplace add rhpds/rhdp-skills-marketplace
+/plugin install showroom@rhdp-marketplace
+----
+
+Then exit Claude Code. You will use it later in Module 3.
 
 == Troubleshooting
 
-**Problem**: `gh: command not found`
+**Problem**: `gh auth status` shows you are not authenticated
 
-**Solution**: The GitHub CLI should be pre-installed. If not, follow the installation instructions at link:https://cli.github.com[cli.github.com^].
+**Solution**: Run `gh auth login` and follow the prompts. Select HTTPS and authenticate with your browser.
 
 **Problem**: GitHub Pages shows a 404 after pushing
 

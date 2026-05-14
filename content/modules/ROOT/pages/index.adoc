@@ -2,14 +2,25 @@
 
 Welcome to the Getting started with Red Hat Showroom workshop!
 
+== A different kind of Showroom
+
+This workshop is designed to run on **your local laptop**. You will read these instructions in your browser and run commands in your own terminal -- there is no embedded terminal on the right side of the screen.
+
+Why? Because creating Showroom content is local work: you clone repos, edit files, run Claude Code, and push to GitHub. This lab meets you where that work happens.
+
+[NOTE]
+====
+When Showroom labs are deployed on the Red Hat Demo Platform, learners get an embedded terminal and execute blocks that send commands directly to it. This lab uses the simpler GitHub Pages delivery model instead, which is the fastest way to publish and share a Showroom.
+====
+
 == What you'll learn
 
 In this workshop, you will:
 
-* Understand how Red Hat Showroom works by exploring a live instance
+* Understand how Red Hat Showroom works and what makes it different from slides-and-SSH workshops
 * Create your own Showroom repository from the official template
-* Configure the split-pane UI, navigation, and site settings
-* Generate complete workshop content using AI-assisted authoring with `/showroom:create-lab`
+* Configure the site, UI, and navigation
+* Generate complete workshop content using AI-assisted authoring with Claude Code and `/showroom:create-lab`
 * Publish your Showroom to GitHub Pages
 
 == Who this is for
@@ -20,13 +31,13 @@ This workshop is designed for anyone at Red Hat who wants to create hands-on wor
 
 == Prerequisites
 
-Before starting this workshop, you should have:
+Before starting, you need:
 
 * A GitHub account with access to the link:https://github.com/rhpds[rhpds organization^]
-* Basic familiarity with terminal commands
-* Claude Code installed with the RHDP Skills Marketplace plugin
-
-NOTE: All tools (GitHub CLI, Podman, Claude Code) are available in the lab environment.
+* link:https://cli.github.com[GitHub CLI^] (`gh`) installed
+* link:https://podman.io[Podman^] installed (for local preview)
+* link:https://claude.ai/claude-code[Claude Code^] installed with the RHDP Skills Marketplace plugin
+* A terminal application (Terminal.app, iTerm2, Windows Terminal, etc.)
 
 == Estimated time
 
@@ -34,4 +45,4 @@ This workshop takes approximately **30 minutes** to complete.
 
 == Let's get started!
 
-Click on **Workshop overview** in the navigation to begin.
+Open a terminal on your laptop and click **Workshop overview** in the navigation to begin.
