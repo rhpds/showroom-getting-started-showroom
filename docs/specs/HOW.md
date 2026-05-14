@@ -157,7 +157,49 @@ tabs:
 * xref:07-conclusion.adoc[Conclusion]
 ```
 
-## Step 4: Create content files
+## Step 4: Create README.adoc
+
+Replace the generic nookbag template README with project-specific content.
+
+**Structure**:
+
+```
+= Getting started with Red Hat Showroom
+
+One-paragraph description: 30-45 minute workshop for Red Hat associates,
+teaches how to create Showroom workshops and demos using AI-assisted
+authoring, local laptop workflow, Widget Server fictional product.
+
+Link to rendered workshop.
+
+== Workshop modules
+
+Table with columns: Module, Topic, Duration, Required?
+- Module 1: Showroom in action (5 min, Yes)
+- Module 2: Create and configure (10 min, Yes)
+- Module 3: Generate lab content (15 min, Yes)
+- Module 4: Create a demo (15 min, Optional)
+
+== Specs
+
+Point to docs/specs/WHAT.md (design) and docs/specs/HOW.md (implementation).
+Explain spec-driven development: specs are the source of truth,
+Claude Code reads them to make changes.
+
+== Local development
+
+Podman preview command (from template):
+  podman run --rm --name antora -v $PWD:/antora -p 8080:8080 -i -t ghcr.io/juliaaano/antora-viewer
+SELinux note about :z suffix.
+
+== RHDP Showroom resources
+
+- Showroom template documentation link
+- Quick-start guide link
+- AI content creation tools link (Skills Marketplace)
+```
+
+## Step 5: Create content files (AsciiDoc)
 
 All files go in `content/modules/ROOT/pages/`. Each file description below includes the complete content outline — section headings, exercise structure, key content points, and verification criteria. This is detailed enough to regenerate each file faithfully.
 
@@ -276,7 +318,7 @@ All files go in `content/modules/ROOT/pages/`. Each file description below inclu
 - "Share your feedback" — 3 questions, Slack link to #forum-demo-developers
 - "Thank you!" — closing
 
-## Step 5: Publish
+## Step 6: Publish
 
 ```bash
 git add -A
@@ -379,6 +421,13 @@ Verification criteria.
 
 Transition to next module.
 ```
+
+### Update the README
+
+1. Read WHAT.md "README" section for what should and should not be in the README
+2. Update `README.adoc` to reflect any changes to modules, audience, description, or links
+3. Ensure the module list matches `nav.adoc` and `02-details.adoc` timing table
+4. Keep the Podman local preview command and RHDP Showroom resources links
 
 ### Change prerequisites
 

@@ -244,6 +244,31 @@ tabs:
 
 **Rationale**: `default_mode: page` because there is no terminal — content fills the full width. Tabs are reference documentation links, not interactive tools. `default_width: 50` gives equal space if someone toggles split view.
 
+## README
+
+The `README.adoc` is the first thing people see on GitHub. It should orient visitors to the project, link to the rendered workshop, and provide quick-start instructions for contributors.
+
+### What the README should contain
+
+1. **Project title and description** — what this showroom is and who it's for (one paragraph)
+2. **Rendered workshop link** — direct URL to the published GitHub Pages site
+3. **Workshop modules** — list of all modules with one-line descriptions, durations, and required/optional flag
+4. **Specs reference** — point to `docs/specs/WHAT.md` and `docs/specs/HOW.md` for spec-driven development
+5. **Local development** — Podman command for local preview (carried over from the nookbag template)
+6. **RHDP Showroom resources** — links to template docs, quick-start guide, and AI content creation tools (carried over from the nookbag template)
+
+### What NOT to include
+
+- The template's generic tagline ("0% cruft", "Showroom Template")
+- The "create a repo from this template" link (this IS the repo, not a template)
+- Instructions for creating a new showroom (that's what the workshop itself teaches)
+
+### What to carry over from the nookbag template README
+
+- The Podman local preview command with SELinux `:z` note
+- The link to https://rhpds.github.io/showroom_template_nookbag/ (full Showroom documentation)
+- The link to RHDP Skills Marketplace and AI content creation documentation
+
 ## AsciiDoc conventions
 
 - **Code blocks**: Use `[source,bash]` for commands learners run in their terminal. Never use `[source,role="execute"]` — there is no embedded terminal to send to.

@@ -1,34 +1,71 @@
-= Showroom Template
+= Getting started with Red Hat Showroom
 
-A template for creating Red Hat Showroom lab guides and demo content, built with https://antora.org[Antora].
+A 30-45 minute hands-on workshop that teaches Red Hat associates how to create their own Showroom workshops and demos. Learners use Claude Code and the RHDP Skills Marketplace to generate production-quality content, configure a Showroom repository, and publish to GitHub Pages -- all from their local laptop.
 
-* 0% cruft
-* Red Hat Demo Platform UI Bundle default
-* Dev Mode extension that displays the asciidoc attributes you have to work with
+This is the only showroom that teaches showroom creation: a "meta-showroom" where the output of the lab is itself a working showroom.
 
-== Documentation
+**Rendered workshop**: https://rhpds.github.io/showroom-getting-started-showroom
 
-Full documentation — getting started, content structure, configuration, local development, and AI-assisted content creation — is available at:
+== Workshop modules
 
-https://rhpds.github.io/showroom_template_nookbag/
+[cols="1,2,1,1",options="header"]
+|===
+|Module |Topic |Duration |Required?
 
-== Quick Start
+|Module 1
+|Showroom in action -- explore a live showroom, view its source
+|5 min
+|Yes
 
-. https://github.com/rhpds/showroom_template_nookbag/generate[Create a repo from this template] (suggested naming: `<lab-name>-showroom`)
-. Clone your new repo and preview locally:
-+
+|Module 2
+|Create and configure -- repo from nookbag template, configure with Claude Code
+|10 min
+|Yes
+
+|Module 3
+|Generate lab content -- use `/showroom:create-lab`, verify, preview, publish
+|15 min
+|Yes
+
+|Module 4
+|Create a presenter-led demo -- use `/showroom:create-demo`, Know/Show structure
+|15 min
+|Optional
+
+|**Total**
+|
+|**30-45 min**
+|
+|===
+
+== Specs
+
+This project uses spec-driven development. Design decisions and implementation details are documented in:
+
+* link:docs/specs/WHAT.md[WHAT.md] -- design specification: audience, story arc, module designs, configuration, conventions, and rationale
+* link:docs/specs/HOW.md[HOW.md] -- implementation guide: step-by-step instructions to recreate the showroom from scratch or make targeted changes
+
+A fresh Claude Code session can read these two files and rebuild or modify the showroom without any conversation history.
+
+== Local development
+
+Clone and preview locally:
+
 [source,sh]
 ----
+git clone https://github.com/rhpds/showroom-getting-started-showroom.git
+cd showroom-getting-started-showroom
 podman run --rm --name antora -v $PWD:/antora -p 8080:8080 -i -t ghcr.io/juliaaano/antora-viewer
 ----
-+
-On SELinux systems, append `:z` to the volume mount.
 
-. Edit content in `content/modules/ROOT/pages/`
-. See the https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html[Content Repository] docs for directory layout, Podman Compose with live reload, dev mode, and more.
+On SELinux systems (RHEL, Fedora), append `:z` to the volume mount: `-v $PWD:/antora:z`.
 
-== Create Content with AI
+Then open http://localhost:8080 in your browser.
 
-The https://github.com/rhpds/rhdp-skills-marketplace[RHDP Skills Marketplace] provides skills for Cursor IDE and Claude Code that generate labs, demos, and validate content against Red Hat standards.
+== RHDP Showroom resources
 
-See the https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html#_creating_content_with_ai_tools[AI Tools documentation] for details.
+This workshop is built with https://github.com/rhpds/showroom_template_nookbag[Red Hat Demo Platform Showroom]. General resources for working with Showroom:
+
+* https://rhpds.github.io/showroom_template_nookbag/[Showroom documentation] -- getting started, content structure, configuration, and local development
+* https://rhpds.github.io/showroom_template_nookbag/modules/quick-start.html[Quick-start guide] -- wiring a Showroom to an AgnosticV catalog item
+* https://rhpds.github.io/showroom_template_nookbag/modules/content-repo.html#_creating_content_with_ai_tools[Create content with AI tools] -- using the https://github.com/rhpds/rhdp-skills-marketplace[RHDP Skills Marketplace] to generate labs, demos, and validate content
