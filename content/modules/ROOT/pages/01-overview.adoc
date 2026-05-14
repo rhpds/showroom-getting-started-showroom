@@ -3,42 +3,44 @@
 
 == Your role and mission
 
-You are a Technical Marketing Manager at Meridian Solutions, a mid-size Red Hat partner specializing in cloud consulting. Your team delivers hands-on workshops at customer events, partner summits, and Red Hat conferences.
+You are a Red Hat associate. Maybe you're a solution architect, a technical marketing manager, a product manager, or a developer advocate -- your exact role doesn't matter. What matters is the message you just got from your manager:
 
-Your VP of Technical Marketing just secured a speaking slot at the next Red Hat partner summit. She needs a hands-on workshop for attendees in three weeks. She has heard about Red Hat Showroom and wants the team to use it instead of the old slide-and-SSH approach.
+_"The Widget Server team just shipped Automated Widget Pipelines in version 3.2. We need a Showroom so the field team can demo the new feature to customers. Can you build one this week?"_
 
-**Your assignment**: Build Meridian's first Showroom-based workshop as a proof of concept.
+**Red Hat Widget Server** is a fictional product we're using as a stand-in for whatever real product you work with. **Automated Widget Pipelines** is the fictional new feature -- a capability that lets users define, test, and deploy widget configurations through a declarative pipeline. Think of it as a generic placeholder for any product feature you might need to demo: OpenShift Pipelines, AAP workflows, RHEL Image Builder templates, or anything else.
 
-**The stakes**: If you succeed, Meridian will adopt Showroom as its standard workshop platform, replacing fragile PDF-plus-bastion workshops. Your colleagues are watching -- if the authoring experience is smooth, the whole technical marketing team will adopt it.
+**Your assignment**: Build a Showroom for the Widget Server 3.2 Automated Widget Pipelines feature.
 
 == Success criteria
 
 By the end of this workshop, you will have:
 
 * A working Showroom repository with properly configured UI and navigation
-* At least one complete hands-on module with exercises and verification steps
-* A published site on GitHub Pages that anyone can access
-* Confidence to create additional modules using AI-assisted authoring
+* A hands-on lab module where customers can try Automated Widget Pipelines themselves
+* Optionally, a presenter-led demo module for SAs to walk customers through the feature
+* A published site on GitHub Pages that you can share with the field team
+* The skills and tools to repeat this process for any real Red Hat product
 
 == Why Showroom?
 
-Meridian's current workshop approach has significant pain points:
+Today, when a new feature ships, the field team often scrambles to put together slides, a terminal script, and a prayer that the live environment cooperates. The result:
 
-* **Inconsistent experiences**: PDFs and SSH sessions look different every time
-* **No embedded consoles**: Learners constantly switch between instruction documents and terminal windows
-* **Difficult to update**: Content changes require redistributing documents
-* **No version control**: Nobody knows which version of the workshop a learner received
+* **Inconsistent demos**: Every SA presents the feature differently
+* **Fragile setups**: SSH sessions break, environments drift, credentials expire
+* **No version control**: Nobody knows which version of the demo a customer saw
+* **Wasted effort**: Each SA builds their own materials from scratch
 
-Showroom solves these problems with a browser-based interface that combines AsciiDoc instructions with embedded terminals and consoles -- all version-controlled in Git and deployable on the Red Hat Demo Platform or as a standalone GitHub Pages site.
+Showroom solves these problems. The field team gets a single, version-controlled, browser-based experience that works the same way every time -- whether delivered as a self-paced lab or a presenter-led demo.
 
 == What you'll build
 
-You will create a complete Showroom workshop from scratch, using AI-assisted tools to generate production-quality content in minutes rather than hours.
+You will create a Showroom for Widget Server 3.2 from scratch:
 
-The workflow:
-
-. Explore a published Showroom to understand how it works
+. Explore a live Showroom to understand how it works
 . Create your own Showroom repository from the official template
-. Configure the UI and site settings
-. Generate a complete workshop module using `/showroom:create-lab`
+. Configure the site and UI settings
+. Generate a hands-on lab module using `/showroom:create-lab`
 . Publish to GitHub Pages
+. Optionally, add a presenter-led demo module using `/showroom:create-demo`
+
+When you're done, replace "Widget Server" with your real product -- the process is identical.

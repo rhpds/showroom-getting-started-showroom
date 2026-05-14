@@ -1,0 +1,220 @@
+= Module 4: Create a presenter-led demo (optional)
+:navtitle: 4. Create a demo (optional)
+
+== Learning objectives
+
+By the end of this module, you will:
+
+* Understand the difference between lab content and demo content
+* Generate a presenter-led demo module using the `/showroom:create-demo` skill
+* Explain the Know/Show structure used in demos
+* Add a demo module to an existing Showroom repository
+
+== Labs vs demos
+
+In Module 3, you created a **lab** -- self-paced, hands-on content where learners follow exercises on their own. Now you'll create a **demo** -- content designed for a presenter to walk a customer through live.
+
+[cols="1,1,1",options="header"]
+|===
+|Aspect |Lab (`/showroom:create-lab`) |Demo (`/showroom:create-demo`)
+
+|**Audience**
+|Self-paced learner
+|Presenter showing to a customer
+
+|**Structure**
+|Exercises with step-by-step instructions and verification
+|Know/Show: brief concept explanation, then live demonstration
+
+|**Pacing**
+|Learner-controlled
+|Presenter-controlled with timing guidance
+
+|**Content**
+|Commands, expected output, troubleshooting
+|Presenter notes, talking points, demo steps
+
+|**Use case**
+|Workshops, training, enablement
+|Customer demos, technical briefings, sales engineering
+|===
+
+Both content types live in the same Showroom repository and share the same configuration. A single Showroom can contain both lab modules and demo modules.
+
+== Exercise 1: Generate a demo module
+
+Your manager mentioned that SAs also need a way to walk customers through Automated Widget Pipelines in a live meeting. Let's add a demo module to your existing Widget Server Showroom.
+
+. Make sure you are in your Showroom repository:
++
+[source,bash]
+----
+cd ~/my-first-showroom
+----
+
+. Start Claude Code:
++
+[source,bash]
+----
+claude
+----
+
+. Run the create-demo skill:
++
+----
+/showroom:create-demo content/modules/ROOT/pages/
+----
+
+. The skill asks a series of questions. Here are suggested answers:
++
+[cols="1,2",options="header"]
+|===
+|Question |Suggested answer
+
+|Demo name
+|Widget Server automated pipelines demo
+
+|Demo goal
+|Show customers how Automated Widget Pipelines simplifies widget deployment
+
+|Target audience
+|Technical decision-makers and architects at customer organizations
+
+|Key talking points
+|Manual widget deployment is slow and error-prone, pipelines automate the process, declarative configuration makes it repeatable
+
+|Business value
+|Reduces deployment time, eliminates manual errors, enables self-service for development teams
+
+|Duration
+|15 minutes
+
+|Technical environment
+|Widget Server 3.2 (use version placeholders)
+|===
+
+. The skill generates a demo module with Know/Show structure:
++
+* **Know sections**: Brief concept explanations with talking points for the presenter
+* **Show sections**: Live demonstration steps the presenter performs
+* **Presenter notes**: Timing cues, what to emphasize, common customer questions
+
+. When the skill finishes, exit Claude Code:
++
+----
+/exit
+----
+
+=== Verify
+
+Check that the demo module was added:
+
+[source,bash]
+----
+ls content/modules/ROOT/pages/
+----
+
+You should see your lab files plus a new demo module. Check the navigation:
+
+[source,bash]
+----
+cat content/modules/ROOT/nav.adoc
+----
+
+The navigation should include the demo module entry.
+
+== Exercise 2: Review the Know/Show structure
+
+Open the generated demo module in your editor or view it on GitHub. Notice the structure:
+
+**Know** (concept explanation):
+
+----
+== Know: What are Automated Widget Pipelines?
+
+Automated Widget Pipelines let teams define their widget deployment
+process as a declarative configuration file...
+
+**Presenter note**: Emphasize that this replaces manual deployment steps.
+Typical customer pain point: "We have 15 manual steps to deploy a widget."
+----
+
+**Show** (live demonstration):
+
+----
+== Show: Create your first pipeline
+
+* Log into the Widget Server console at {console_url}
+* Navigate to Pipelines → Create Pipeline
+* ...
+
+**Presenter note**: Pause here and ask the customer about their current
+deployment process. This helps tailor the rest of the demo.
+----
+
+The Know/Show pattern ensures the presenter provides context before demonstrating, rather than jumping straight into clicking through screens.
+
+=== Verify
+
+Your demo module contains:
+
+* At least one Know section with concept explanation and talking points
+* At least one Show section with live demonstration steps
+* Presenter notes with timing and audience engagement cues
+
+== Exercise 3: Publish the updated Showroom
+
+. Commit and push the demo module:
++
+[source,bash]
+----
+git add -A
+git commit -m "Add Widget Server demo module"
+git push origin main
+----
+
+. Wait for the GitHub Pages deployment to complete (1-2 minutes):
++
+[source,bash]
+----
+gh run list --limit 1
+----
+
+. Open your published Showroom and confirm the demo module appears in the navigation alongside your lab module.
+
+=== Verify
+
+* The published Showroom shows both the lab module and the demo module in the sidebar
+* The demo module renders with Know/Show sections and presenter notes
+
+== When to use labs vs demos
+
+Now that you can create both, here's when to use each:
+
+**Create a lab** when:
+
+* You want learners to get hands-on experience
+* The content is for workshops, training, or enablement
+* Learners need to verify their own success with commands and expected output
+* The content will be used for self-paced learning
+
+**Create a demo** when:
+
+* A presenter will walk through the content live with a customer
+* The goal is to show business value and generate interest
+* You need talking points and timing guidance
+* The audience is decision-makers who won't be running commands themselves
+
+**Create both** when:
+
+* The field team needs to demo to customers (demo) AND train partners (lab)
+* You want a "see it, then try it" flow in a single Showroom
+
+== Learning outcomes
+
+By completing this module, you should now understand:
+
+* The difference between lab content and demo content in Showroom
+* How `/showroom:create-demo` generates presenter-led content with Know/Show structure
+* How to add a demo module to an existing Showroom that already has lab content
+* When to use labs, demos, or both for your content needs

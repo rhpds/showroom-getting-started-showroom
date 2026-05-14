@@ -6,7 +6,7 @@
 By the end of this module, you will:
 
 * Describe what a Showroom is and the two delivery models (RHDP and GitHub Pages)
-* Identify the key components of a Showroom content repository
+* Identify the two content types: hands-on labs and presenter-led demos
 * View the AsciiDoc source behind a rendered Showroom page
 * Understand how content maps from source files to what learners see
 
@@ -108,12 +108,33 @@ The four key configuration files:
 
 You understand the four configuration files and their roles. In the next module, you will create and configure all of them for your own Showroom.
 
+== Two types of Showroom content
+
+Before you start building, it helps to know that Showroom supports two content types:
+
+**Labs** (created with `/showroom:create-lab`):
+
+* Self-paced, hands-on exercises
+* Learners follow step-by-step instructions and run commands
+* Each exercise has verification steps so learners confirm success
+* Best for: workshops, training, enablement
+
+**Demos** (created with `/showroom:create-demo`):
+
+* Presenter-led walkthroughs
+* Follow a Know/Show structure: brief concept explanation, then live demonstration
+* Include presenter notes and timing guidance
+* Best for: customer demos, technical briefings, sales engineering
+
+You will create a lab in Module 3. If you want to also create a demo, continue to the optional Module 4.
+
 == Learning outcomes
 
 By completing this module, you should now understand:
 
 * Showroom delivers AsciiDoc content from a Git repository, rendered by Antora
-* Two delivery models exist: full RHDP deployment (split-pane with terminals) and GitHub Pages (standalone content site)
+* Two delivery models exist: RHDP deployment (split-pane with terminals) and GitHub Pages (standalone content site)
+* Two content types exist: hands-on labs and presenter-led demos
 * The content repository has a standard directory layout with four key configuration files
 * What you see rendered in the browser maps directly to AsciiDoc source files on GitHub
 

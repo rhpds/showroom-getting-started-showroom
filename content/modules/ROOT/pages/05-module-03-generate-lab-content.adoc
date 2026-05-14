@@ -1,22 +1,22 @@
-= Module 3: Generate content and publish
-:navtitle: 3. Generate and publish
+= Module 3: Generate lab content and publish
+:navtitle: 3. Generate lab content
 
 == Learning objectives
 
 By the end of this module, you will:
 
-* Generate a complete workshop module using the `/showroom:create-lab` skill
+* Generate a complete hands-on lab module using the `/showroom:create-lab` skill
 * Validate content quality with `/showroom:verify-content`
 * Preview your Showroom locally using Podman
 * Publish your Showroom to GitHub Pages
 
 == Time to create content
 
-Your Showroom repository is configured and ready. Now comes the exciting part -- generating your first workshop module using AI-assisted authoring.
+Your Showroom repository is configured and ready. Now comes the exciting part -- generating your first lab module using AI-assisted authoring.
 
 The `/showroom:create-lab` skill walks you through an interactive workflow that asks about your workshop topic, audience, business scenario, and learning objectives. It then generates complete, production-quality AsciiDoc files with exercises, verification steps, and proper Red Hat formatting.
 
-== Exercise 1: Generate your workshop content
+== Exercise 1: Generate your lab module
 
 . Make sure you are in your Showroom repository directory:
 +
@@ -38,32 +38,32 @@ claude
 /showroom:create-lab content/modules/ROOT/pages/ --new
 ----
 
-. The skill asks a series of questions, one at a time. Here are suggested answers for Meridian's workshop, but feel free to customize:
+. The skill asks a series of questions, one at a time. Here are suggested answers for the Widget Server lab, but feel free to customize:
 +
 [cols="1,2",options="header"]
 |===
 |Question |Suggested answer
 
 |Workshop name
-|Meridian Solutions container workshop
+|Widget Server automated pipelines
 
 |Learning goal
-|Learn to build and deploy containerized applications on OpenShift
+|Learn to define, test, and deploy widget configurations using Automated Widget Pipelines
 
 |Target audience
-|Developers and architects, beginner level
+|Developers and platform engineers, beginner level
 
 |Learning outcomes
-|Build container images, deploy to OpenShift, configure networking and storage
+|Create a widget pipeline, configure pipeline stages, test and deploy a widget configuration
 
 |Business scenario
-|Meridian Solutions needs to modernize their client delivery pipeline with containers
+|Your team needs to automate widget deployments that are currently done manually, causing delays and inconsistencies
 
 |Duration
 |30 minutes
 
 |Technical environment
-|OpenShift (use version placeholders), single module
+|Widget Server 3.2 (use version placeholders), single module
 |===
 
 . The skill generates four files:
@@ -164,7 +164,7 @@ Time to go live. The nookbag template includes a GitHub Actions workflow that au
 [source,bash]
 ----
 git add -A
-git commit -m "Add first workshop module"
+git commit -m "Add Widget Server lab module"
 ----
 
 . Push to GitHub:
@@ -213,33 +213,24 @@ Replace `my-first-showroom` with your actual repository name.
 
 == What you've accomplished
 
-In 30 minutes, you went from zero to a fully published Showroom workshop:
+You now have a published Showroom with a hands-on lab module for Widget Server Automated Pipelines:
 
 * A version-controlled workshop repository on GitHub
 * A properly configured Showroom ready for both GitHub Pages and RHDP deployment
-* A production-quality hands-on module with exercises and verification steps
+* A production-quality hands-on lab with exercises and verification steps
 * An automated publishing pipeline via GitHub Pages
-* A repeatable process for creating additional modules
 
-Your VP will be pleased. The proof of concept is ready for the partner summit.
+Your manager asked for a Showroom for the field team. The lab is ready.
 
-== Adding more modules
+== What's next
 
-To add another module to your workshop:
-
-. Start Claude Code in your repository
-. Run `/showroom:create-lab content/modules/ROOT/pages/`
-. Choose "EXISTING lab" when asked
-. The skill detects the next file number, continues your story arc, and updates the navigation
-
-When you finish your last module, tell the skill it's the final one -- it will generate a conclusion page with consolidated references from all modules.
+If you want to also create a **presenter-led demo** for SAs to walk customers through the feature, continue to Module 4. Otherwise, skip ahead to the Conclusion.
 
 == Learning outcomes
 
 By completing this module, you should now understand:
 
-* How `/showroom:create-lab` generates complete workshop content through an interactive Q&A
+* How `/showroom:create-lab` generates complete lab content through an interactive Q&A
 * How `/showroom:verify-content` validates content against Red Hat quality standards
 * How to preview a Showroom locally with Podman before publishing
 * How GitHub Pages automatically deploys your content when you push to `main`
-* How to add more modules to an existing workshop

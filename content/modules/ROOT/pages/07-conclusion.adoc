@@ -10,24 +10,40 @@ Throughout this workshop, you gained hands-on experience with:
 * How Showroom works -- AsciiDoc content in Git, rendered by Antora, delivered via GitHub Pages or the Red Hat Demo Platform
 * Creating a Showroom repository from the nookbag template using `gh repo create --template`
 * Configuring the four key files: `site.yml`, `antora.yml`, `ui-config.yml`, and `nav.adoc`
-* Generating complete workshop content using the `/showroom:create-lab` AI skill
+* Generating hands-on lab content using the `/showroom:create-lab` AI skill
 * Validating content quality with `/showroom:verify-content`
 * Previewing locally with Podman and publishing to GitHub Pages
+* (If you completed Module 4) Creating presenter-led demo content using `/showroom:create-demo` and the Know/Show structure
 
-You now have the skills to create professional, hands-on workshops for any Red Hat technology.
+You now have the skills to create professional workshops and demos for any Red Hat product.
 
 == Key takeaways
 
 . **Showroom is AsciiDoc in a Git repo**: All content is version-controlled, collaborative, and reviewable -- no more fragile PDFs or slide decks
 . **The nookbag template gets you started fast**: One `gh repo create --template` command gives you the correct structure, GitHub Pages workflow, and Antora configuration
-. **AI skills accelerate authoring**: `/showroom:create-lab` generates production-quality modules in minutes, following Red Hat style and accessibility standards automatically
+. **AI skills accelerate authoring**: `/showroom:create-lab` and `/showroom:create-demo` generate production-quality content in minutes, following Red Hat style and accessibility standards automatically
+. **Two content types, one repo**: Labs for hands-on learning, demos for presenter-led walkthroughs -- both live in the same Showroom repository
 . **Two delivery models, one repo**: The same content works on GitHub Pages (for previewing and sharing) and on the Red Hat Demo Platform (for the full split-pane experience with embedded terminals)
+
+== From Widget Server to your real product
+
+Everything you built with the fictional Widget Server applies directly to your real product:
+
+. Create a new Showroom repo: `gh repo create rhpds/<your-product>-showroom --template rhpds/showroom_template_nookbag --public --clone`
+. Clean and configure with Claude Code
+. Run `/showroom:create-lab` with your real product documentation as reference material
+. Optionally add a demo with `/showroom:create-demo`
+. Publish and share with the field team
+
+The process is identical. The only difference is the reference materials you feed the skills.
 
 == Next steps
 
-=== Create more modules
+=== Add more modules
 
-Add modules to your workshop by running `/showroom:create-lab` again and choosing "EXISTING lab." The skill detects the next file number, continues your story arc, and updates the navigation automatically.
+Add modules to your workshop by running `/showroom:create-lab` (or `/showroom:create-demo`) again and choosing "EXISTING lab." The skill detects the next file number, continues your story arc, and updates the navigation automatically.
+
+When you finish your last module, tell the skill it's the final one -- it generates a conclusion page with consolidated references.
 
 === Deploy on the Red Hat Demo Platform
 
@@ -46,7 +62,6 @@ See the link:https://rhpds.github.io/showroom_template_nookbag/modules/quick-sta
 
 The RHDP Skills Marketplace has additional skills for the full content lifecycle:
 
-* `/showroom:create-demo` -- generate presenter-led demo content with Know/Show structure
 * `/showroom:verify-content` -- validate content against Red Hat quality standards
 * `/showroom:blog-generate` -- transform workshops into blog posts
 * `/agnosticv:catalog-builder` -- create AgnosticV catalog items for RHDP deployment
@@ -80,4 +95,4 @@ Reach out on Slack: link:https://redhat.enterprise.slack.com/archives/C04MLMA15M
 
 == Thank you!
 
-Thank you for completing this workshop. You are now equipped to create professional, interactive Showroom workshops for any Red Hat technology.
+Thank you for completing this workshop. You are now equipped to create professional, interactive Showroom workshops and demos for any Red Hat product.

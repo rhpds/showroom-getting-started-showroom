@@ -3,26 +3,37 @@
 
 == Timing and schedule
 
-[cols="1,2,1",options="header"]
+[cols="1,2,1,1",options="header"]
 |===
-|Module |Topic |Duration
+|Module |Topic |Duration |Required?
 
 |Module 1
 |Showroom in action
 |5 minutes
+|Yes
 
 |Module 2
 |Create and configure your Showroom
 |10 minutes
+|Yes
 
 |Module 3
-|Generate content and publish
+|Generate lab content and publish
 |15 minutes
+|Yes
+
+|Module 4
+|Create a presenter-led demo
+|15 minutes
+|Optional
 
 |**Total**
 |
-|**30 minutes**
+|**30-45 minutes**
+|
 |===
+
+Modules 1-3 cover the lab path. Module 4 is optional and teaches you how to create presenter-led demo content using `/showroom:create-demo`.
 
 == What you need on your laptop
 

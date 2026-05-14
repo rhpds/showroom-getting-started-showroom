@@ -17,15 +17,25 @@ When Showroom labs are deployed on the Red Hat Demo Platform, learners get an em
 
 In this workshop, you will:
 
-* Understand how Red Hat Showroom works and what makes it different from slides-and-SSH workshops
+* Understand how Red Hat Showroom works and the two types of content it supports (labs and demos)
 * Create your own Showroom repository from the official template
 * Configure the site, UI, and navigation
-* Generate complete workshop content using AI-assisted authoring with Claude Code and `/showroom:create-lab`
+* Generate a hands-on **lab module** using `/showroom:create-lab`
+* Optionally, generate a presenter-led **demo module** using `/showroom:create-demo`
 * Publish your Showroom to GitHub Pages
+
+== Two paths
+
+Showroom supports two types of content:
+
+* **Labs** -- self-paced, hands-on exercises where learners follow step-by-step instructions (Modules 1-3, required)
+* **Demos** -- presenter-led walkthroughs with Know/Show structure and timing cues (Module 4, optional)
+
+You will build a lab first. If you also want to learn how to create demo content, continue to the optional Module 4.
 
 == Who this is for
 
-This workshop is designed for anyone at Red Hat who wants to create hands-on workshops and demos -- product managers, technical marketing managers, field teams, solution architects, and content creators.
+This workshop is for **Red Hat associates** -- solution architects, technical marketing managers, product managers, developer advocates, and anyone who needs to create workshops or demos for Red Hat products.
 
 **Experience level**: Beginner -- no prior AsciiDoc, Antora, or Showroom experience required.
 
@@ -33,7 +43,7 @@ This workshop is designed for anyone at Red Hat who wants to create hands-on wor
 
 Before starting, you need:
 
-* A GitHub account with access to the link:https://github.com/rhpds[rhpds organization^]
+* A Red Hat GitHub account with access to the link:https://github.com/rhpds[rhpds organization^]
 * link:https://cli.github.com[GitHub CLI^] (`gh`) installed
 * link:https://podman.io[Podman^] installed (for local preview)
 * link:https://claude.ai/claude-code[Claude Code^] installed with the RHDP Skills Marketplace plugin
@@ -41,7 +51,8 @@ Before starting, you need:
 
 == Estimated time
 
-This workshop takes approximately **30 minutes** to complete.
+* **Lab path only** (Modules 1-3): approximately **30 minutes**
+* **Lab + demo** (Modules 1-4): approximately **45 minutes**
 
 == Let's get started!
 

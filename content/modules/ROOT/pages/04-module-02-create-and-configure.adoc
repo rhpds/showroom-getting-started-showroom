@@ -14,7 +14,7 @@ By the end of this module, you will:
 
 Open a terminal on your laptop. All commands in this module run in your local terminal.
 
-Meridian Solutions needs a Showroom for the partner summit workshop. Let's create the repository that will hold your workshop content.
+Your manager needs a Showroom for the Widget Server 3.2 Automated Widget Pipelines feature. Let's create the repository that will hold your content.
 
 Red Hat provides an official template repository called `showroom_template_nookbag` that includes the correct directory structure, GitHub Pages workflow, and Antora configuration out of the box.
 
@@ -78,12 +78,12 @@ claude
 . Give Claude Code the following instruction:
 +
 ----
-Clean this Showroom repo for a new workshop called "Meridian Solutions container workshop":
+Clean this Showroom repo for a new workshop called "Widget Server automated pipelines":
 
 1. Delete all .adoc files in content/modules/ROOT/pages/
 2. Create directories: content/modules/ROOT/assets/images and content/modules/ROOT/partials
-3. Update site.yml: change title to "Meridian Solutions container workshop" and url to this repo's GitHub URL
-4. Update content/antora.yml: set title to "Meridian Solutions container workshop", remove all example attributes (guid, bastion_*, ssh_*, openshift_*), keep experimental and page-pagination
+3. Update site.yml: change title to "Widget Server automated pipelines" and url to this repo's GitHub URL
+4. Update content/antora.yml: set title to "Widget Server automated pipelines", remove all example attributes (guid, bastion_*, ssh_*, openshift_*), keep experimental and page-pagination
 5. Update ui-config.yml: replace the Antora tab with a Terminal tab (name: Terminal, path: /wetty, port: 443)
 6. Replace content/modules/ROOT/nav.adoc contents with just: * xref:index.adoc[Home]
 ----
@@ -112,7 +112,7 @@ The pages directory should be empty.
 grep "title:" site.yml
 ----
 
-Should show "Meridian Solutions container workshop".
+Should show "Widget Server automated pipelines".
 
 [source,bash]
 ----
